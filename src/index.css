@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --glow-color-1: rgb(255, 221, 0);   /* Bright Yellow */
+  --glow-color-2: rgb(255, 165, 0);   /* Orange */
+  --glow-color-3: rgb(250, 250, 250); /* Off-white */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f0f2f5; /* Light grey background */
+  color: #1a202c; /* Dark text for readability */
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* New White/Yellow Aurora Background Effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image:
+    radial-gradient(circle at 15% 25%, var(--glow-color-1), transparent 30%),
+    radial-gradient(circle at 85% 35%, var(--glow-color-2), transparent 40%),
+    radial-gradient(circle at 50% 80%, var(--glow-color-3), transparent 30%);
+  background-size: 200% 200%;
+  animation: aurora-light 30s linear infinite;
+  filter: blur(120px);
+  opacity: 0.4;
+}
+
+@keyframes aurora-light {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Add this to src/index.css for the custom glow */
+.custom-glow {
+  text-shadow:
+    0 0 2px rgba(255, 221, 0, 0.7),
+    0 0 8px rgba(255, 221, 0, 0.5),
+    0 0 15px rgba(255, 165, 0, 0.4);
+}
+
+/* Add this to src/index.css for the nav link glow on hover */
+.nav-link-glow:hover {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.9);
+}
